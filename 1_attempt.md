@@ -1,3 +1,7 @@
+Snapshot code (attempt-before-AI): [ADD HASH AFTER COMMIT]
+
+Data: teaching_prices_clean_week2.csv, my Week 2 cleaned file (2_work.ipynb loads it in Part 0). 96 rows, 4 items x 2 cities x 12 weeks (1 Jan to 19 Mar 2026). 3 prices are missing and flagged: Pulse C City 2 on 1 Jan (blank), Staple A City 2 on 15 Jan (was "1,250"), Sweetener D City 1 on 22 Jan (was 9999).
+
 Step 1: Statistics for each item
 
 Code: groupby("item")["price"].agg(["count", "mean", "median", ...]) and first vs last date by item and city.
@@ -26,7 +30,7 @@ Without 1,250: 23 prices. Mean 111.26, median 112.5. With 1,250: 24 prices. Mean
 
 The mean moved by 47.45 PKR. The median did not move at all. Why: the mean adds every price and divides by the count, so one price that is about 1,139 PKR too high adds 1,138.74 / 24 = 47.45 to the mean. 158.71 is higher than every real Staple A price (the highest is 122), so it is not a typical price. The median only looks at the middle of the sorted list. 1,250 goes to the top of the list, and the middle stays at 112.5. Same test on Sweetener D with 9999: the mean goes from 167.15 to 576.81, and the median only from 167.5 to 167.75.
 
-Step 3: Referee's note 
+Step 3: Referee's note (draft)
 
 Did the staple really go up?
 
